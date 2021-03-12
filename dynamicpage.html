@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  //Google Jquery Link
+  
+<script>
+    function getupdate() {
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    $.getJSON($SCRIPT_ROOT+"/stuff",
+    function(data) {
+        console.log(data);
+        $('#newdata').text(data.recieve);      //Updating the new value to html element
+    })
+}
+ setInterval(getupdate, 100);             //calling the function every 100ms
+        
+  
+</script>
+</head>
+<body>
+   <p id ="newdata">  </p>             //Updating this element
+</body>
+</html>
